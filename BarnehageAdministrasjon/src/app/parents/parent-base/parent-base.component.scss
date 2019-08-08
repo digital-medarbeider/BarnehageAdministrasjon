@@ -1,0 +1,17 @@
+.cardList {
+  display: flex;
+  flex-direction: row;
+  max-width: 100%;
+  .card {
+    display: block;
+    padding: 16px;
+    border: 1px solid black;
+    border-radius: 0px;
+    width: 50%
+  }
+}
+/* Row Gap */
+/*.cardList > *:not(:last-child) {
+  margin-bottom: 32px;
+}*/
+

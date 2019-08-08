@@ -1,0 +1,14 @@
+<mat-toolbar style="background-color : #10727C; color: white">
+  <mat-toolbar-row>
+    <button mat-icon-button>
+      <mat-icon (click)="changeValue(isExpandedToolBar)">menu</mat-icon>
+    </button>
+    <h1>BARNEHAGESOKNAD</h1>
+    <span class="menu-spacer"></span>
+    <div>
+      <button mat-icon-button>
+        <mat-icon [routerLink]="'/logout'">logout</mat-icon>
+      </button>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>

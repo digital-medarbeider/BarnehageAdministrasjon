@@ -1,0 +1,26 @@
+<!--<div *ngIf="authentication">
+  <app-toolbar [sidenav]="sidenav"></app-toolbar>
+  <mat-sidenav-container autosize>
+    <mat-sidenav #sidenav mode="side" disableClose="true" opened="true">
+      <app-side-nav></app-side-nav>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <div style="height: 88vh">
+        <router-outlet></router-outlet>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>-->
+<!--<div *ngIf="!authentication"><app-login></app-login></div>-->
+<app-toolbar [isExpandedToolBar]="isExpandedParent" (messageToEmit)="getMessage($event)"></app-toolbar>
+<mat-drawer-container class="example-container mat-typography">
+  <mat-drawer #drawer mode="side" disableClose="true" opened="true">
+    <app-side-nav [isExpandedSideNav] ="isExpandedParent"></app-side-nav>
+  </mat-drawer>
+  <mat-drawer-content>
+    <div style="height: 88vh">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container>
+
