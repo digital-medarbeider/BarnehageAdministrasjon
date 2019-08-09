@@ -2,7 +2,16 @@
   background-color: #f3f4f4;
 
   .form-main {
-    mat-label{
+    .Rectangle-57 {
+      width: 171px;
+      height: 42px;
+      object-fit: contain;
+      border-radius: 8px;
+      border: solid 1px #f08065;
+      background-color: #ffffff;
+    }
+
+    mat-label {
       /*font-size:18px*/
     }
   }

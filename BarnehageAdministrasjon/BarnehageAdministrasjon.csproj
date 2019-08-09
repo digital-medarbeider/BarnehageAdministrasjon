@@ -10,19 +10,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="src\assets\NewFolder\**" />
-    <Content Remove="src\assets\NewFolder\**" />
-    <EmbeddedResource Remove="src\assets\NewFolder\**" />
-    <None Remove="src\assets\NewFolder\**" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="src\app\parents\shared\" />
+    <Folder Include="src\assets\images\" />
   </ItemGroup>
 
 </Project>

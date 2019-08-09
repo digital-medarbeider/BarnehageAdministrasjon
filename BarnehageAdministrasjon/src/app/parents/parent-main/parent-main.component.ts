@@ -10,6 +10,7 @@ import { ApplicationService } from '../shared/application.service';
 export class ParentMainComponent implements OnInit {
   applicationForm: FormGroup;
   application;
+  selectedValue;
   languages = [
     { value: 1, viewValue: 'Norsk' },
     { value: 2, viewValue: 'English' },
@@ -34,9 +35,11 @@ export class ParentMainComponent implements OnInit {
       childAddress: this.application.childAddress,
       fatherName: this.application.fatherName,
       motherName: this.application.motherName,
-      languageId: 'Norsk',
-      levelOfLanguage: ''
+      homeLanguage: 1,
+      levelOfSpoken: 'Fluent',
+      reducedFee: 'Nei'
     });
+    this.selectedValue = this.languages[0];
 
   }
 
@@ -45,7 +48,13 @@ export class ParentMainComponent implements OnInit {
   }
 
   selected(event) {
-    this.isVisible = event.value === 1 ? false : true;
+    if (event.value == 1) {
+      this.isVisible = false;
+    }
+    else {
+      this.isVisible = true;
+    }
+
   }
 
 }

@@ -27,5 +27,11 @@ namespace BarnehageAdministrasjon.ViewModels
 
         [JsonProperty("motherName")]
         public string MotherName { get; set; }
+
+        [JsonProperty("homeLanguage")]
+        public string HomeLanguage { get; set; }
+
+        [JsonProperty("levelOfSpoken")]
+        public string LevelOfSpoken { get; set; }
     }
 }

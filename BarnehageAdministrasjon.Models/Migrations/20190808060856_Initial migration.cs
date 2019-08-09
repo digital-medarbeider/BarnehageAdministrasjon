@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace BarnehageAdministrasjon.Models.Migrations
 {
-    public partial class InitialCreated : Migration
+    public partial class Initialmigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -15,7 +15,9 @@ namespace BarnehageAdministrasjon.Models.Migrations
                     ChildName = table.Column<string>(nullable: true),
                     ChildAddress = table.Column<string>(nullable: true),
                     FatherName = table.Column<string>(nullable: true),
-                    MotherName = table.Column<string>(nullable: true)
+                    MotherName = table.Column<string>(nullable: true),
+                    HomeLanguage = table.Column<string>(nullable: true),
+                    LevelOfSpoken = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {

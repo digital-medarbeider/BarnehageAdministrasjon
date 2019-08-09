@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BarnehageAdministrasjon.Models.Migrations
 {
     [DbContext(typeof(KindergartenContext))]
-    [Migration("20190806060326_InitialCreated")]
-    partial class InitialCreated
+    [Migration("20190808060856_Initial migration")]
+    partial class Initialmigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -31,6 +31,10 @@ namespace BarnehageAdministrasjon.Models.Migrations
                     b.Property<string>("ChildName");
 
                     b.Property<string>("FatherName");
+
+                    b.Property<string>("HomeLanguage");
+
+                    b.Property<string>("LevelOfSpoken");
 
                     b.Property<string>("MotherName");
 

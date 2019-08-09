@@ -4,4 +4,6 @@ export class Application {
   childAddress: string;
   fatherName: string;
   motherName: string;
+  homeLanguage: string;
+  levelOfSpoken: string;
 }

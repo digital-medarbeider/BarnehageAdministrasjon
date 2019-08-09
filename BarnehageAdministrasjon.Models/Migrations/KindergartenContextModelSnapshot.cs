@@ -30,6 +30,10 @@ namespace BarnehageAdministrasjon.Models.Migrations
 
                     b.Property<string>("FatherName");
 
+                    b.Property<string>("HomeLanguage");
+
+                    b.Property<string>("LevelOfSpoken");
+
                     b.Property<string>("MotherName");
 
                     b.HasKey("Id");

@@ -4,37 +4,45 @@
     <div>Soknad om barnehageplass</div>
     <div>{{application.childAddress}}</div>
     <div>Foresatte: {{application.motherName}} Mor og {{application.fatherName}} Far</div>
-    <!--<div class="form-group">
-    <label for="language">Daglig språk i hjemmet</label>
-    <div class="fld-val">
-      <select class="form-control" id="language" formControlName="language">
-        <option>Norsk</option>
-        <option>English</option>
-      </select>
-    </div>
-  </div>-->
-    <!--<mat-form-field>
-      <mat-label>Daglig språk i hjemmet</mat-label>
-      <mat-select (change)="onLanguageSelection($event.value)">
-        <mat-option *ngFor="let lan of languages" [value]="lan.value">{{lan.viewValue}}</mat-option>
-      </mat-select>
-    </mat-form-field>-->
-
     <mat-form-field>
-      <!--<mat-label>Daglig språk i hjemmet</mat-label>-->
-      <mat-select (selectionChange)="selected($event)" formControlName="languageId">
-        <mat-option *ngFor="let lan of languages" [value]="lan.value">
+      <mat-label>Daglig språk i hjemmet</mat-label>
+      <mat-select class="Rectangle-57" (selectionChange)="selected($event)" formControlName="homeLanguage" [(ngModel)]="selectedValue">
+        <mat-option *ngFor="let lan of languages" [value]="lan">
           {{ lan.viewValue }}
         </mat-option>
       </mat-select>
     </mat-form-field>
     <div *ngIf="isVisible">
       <mat-label>Level of Spoken Norwegian</mat-label><br>
-      <mat-button-toggle-group name="NorwegianLevel" aria-label="Font Style" formControlName="levelOfLanguage">
-        <mat-button-toggle value="bold">Fluent</mat-button-toggle>
-        <mat-button-toggle value="italic">Medium</mat-button-toggle>
-        <mat-button-toggle value="underline">Low</mat-button-toggle>
+      <mat-button-toggle-group name="levelOfSpoken" aria-label="Font Style" formControlName="levelOfSpoken">
+        <mat-button-toggle value="Fluent">Fluent</mat-button-toggle>
+        <mat-button-toggle value="Medium">Medium</mat-button-toggle>
+        <mat-button-toggle value="Low">Low</mat-button-toggle>
       </mat-button-toggle-group>
+    </div><br />
+    <div>
+      <mat-label>Samtykke til å søke om redusert foreldrebetaling</mat-label><br>
+      <mat-button-toggle-group name="reducedFee" aria-label="Font Style" formControlName="reducedFee">
+        <mat-button-toggle value="Nei">Nei</mat-button-toggle>
+        <mat-button-toggle value="Ja">Ja</mat-button-toggle>
+      </mat-button-toggle-group>
+    </div><br />
+    <div layout="row" flex>
+      <mat-label>Andre relevante opplysninger?</mat-label>
+      <div>
+        <button mat-button class="md-raised">
+          Disabilities
+        </button>
+        <button mat-button class="md-raised">
+          Language
+        </button>
+        <button mat-button class="md-raised">
+          Illiness in family
+        </button>
+        <button mat-button class="md-raised">
+          Low income
+        </button>
+      </div>
     </div>
   </form>
   </div>
