@@ -7,9 +7,9 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-Microsoft Visual Studio 2017 Version 15.9.14
-Node
-Angular CLI
+* Microsoft Visual Studio 2017 Version 15.9.14
+* Node
+* Angular CLI
 
 ### Installing
 
