@@ -7,17 +7,33 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
-
-```
-Give examples
-```
+Microsoft Visual Studio 2017 Version 15.9.14
+Node
+Angular CLI
 
 ### Installing
 
 A step by step series of examples that tell you how to get a development env running
 
-Say what the step will be
+Open the project .sln file from Visual Studio 2017
+Change the ConnectionStrings -> DefaultConnection -> Server=[Sql server] in appsettings.json file in BarnehageAdministrasjon.Web.API
+
+Open the Package Manager Console
+Tools -> Nuget Package Manager -> Package Manager Console
+
+Select the default projecj to BarnehageAdministrasjon.Models
+
+Run the following command
+Add-Migration Initial-Migration
+
+Then run the following command
+Update-Database
+
+Now the database will be created in SQL Server 
+Now execuate the application
+
+
+
 
 ```
 Give the example
@@ -71,7 +87,7 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+* **DIME** - *Initial work* 
 
 See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
