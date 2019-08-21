@@ -1,50 +1,99 @@
 <div class="app-content">
   <form class="form-main" [formGroup]="applicationForm">
-    <div>{{application.childName}}</div>
-    <div>Soknad om barnehageplass</div>
-    <div>{{application.childAddress}}</div>
-    <div>Foresatte: {{application.motherName}} Mor og {{application.fatherName}} Far</div>
-    <mat-form-field>
-      <mat-label>Daglig språk i hjemmet</mat-label>
-      <mat-select class="Rectangle-57" (selectionChange)="selected($event)" formControlName="homeLanguage" [(ngModel)]="selectedValue">
-        <mat-option *ngFor="let lan of languages" [value]="lan">
-          {{ lan.viewValue }}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-    <div *ngIf="isVisible">
-      <mat-label>Level of Spoken Norwegian</mat-label><br>
-      <mat-button-toggle-group name="levelOfSpoken" aria-label="Font Style" formControlName="levelOfSpoken">
-        <mat-button-toggle value="Fluent">Fluent</mat-button-toggle>
-        <mat-button-toggle value="Medium">Medium</mat-button-toggle>
-        <mat-button-toggle value="Low">Low</mat-button-toggle>
-      </mat-button-toggle-group>
-    </div><br />
-    <div>
-      <mat-label>Samtykke til å søke om redusert foreldrebetaling</mat-label><br>
-      <mat-button-toggle-group name="reducedFee" aria-label="Font Style" formControlName="reducedFee">
-        <mat-button-toggle value="Nei">Nei</mat-button-toggle>
-        <mat-button-toggle value="Ja">Ja</mat-button-toggle>
-      </mat-button-toggle-group>
-    </div><br />
-    <div layout="row" flex>
-      <mat-label>Andre relevante opplysninger?</mat-label>
-      <div>
-        <button mat-button class="md-raised">
-          Disabilities
-        </button>
-        <button mat-button class="md-raised">
-          Language
-        </button>
-        <button mat-button class="md-raised">
-          Illiness in family
-        </button>
-        <button mat-button class="md-raised">
-          Low income
-        </button>
+    <div class="form-group">
+      <div>{{application.child.firstName}} {{application.child.lastName}}</div>
+      <div>Soknad om barnehageplass</div>
+      <div>{{application.child.address}}</div>
+      <div>Foresatte: {{application.mother.firstName}} Mor og {{application.father.firstName}} Far</div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label for="language">Daglig språk i hjemmet</label>
+          <div class="fld-val">
+            <select class="form-control Rectangle-57" id="firstLanguage" (change)="selectedLanguage(selectedValue)" formControlName="firstLanguage" [(ngModel)]="selectedValue">
+              <option *ngFor="let lan of languages" [value]="lan.value">{{ lan.viewValue }}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div *ngIf="isVisible" class="form-group">
+          <label for="option1">Level of Spoken Norwegian</label><br />
+          <div class="btn-group btn-group-toggle" data-toggle="buttons">
+            <label class="btn btn-outline-secondary" [ngClass]="{active: applicationForm.controls.levelOfSpoken.value == 'Fluent'}">
+              <input type="radio" value="Fluent" name="levelOfSpoken" formControlName="levelOfSpoken" id="option1"  > Fluent
+            </label>
+            <label class="btn btn-outline-secondary" [ngClass]="{active: applicationForm.controls.levelOfSpoken.value == 'Medium'}">
+              <input type="radio" value="Medium" name="levelOfSpoken" formControlName="levelOfSpoken" id="option2"> Medium
+            </label>
+            <label class="btn btn-outline-secondary" [ngClass]="{active: applicationForm.controls.levelOfSpoken.value == 'Low'}">
+              <input type="radio" value="Low" name="levelOfSpoken" formControlName="levelOfSpoken" id="option3"> Low
+            </label>
+          </div>
+        </div>
       </div>
     </div>
-  </form>
+    <div class="form-group">
+      <label for="reducedFee">Samtykke til å søke om redusert foreldrebetaling</label><br>
+      <div class="btn-group btn-group-toggle" data-toggle="buttons" >  <!--(click)="onReducedFeeButtonGroupClick($event)"-->
+        <label class="btn btn-outline-secondary" [ngClass]="{active: applicationForm.controls.reducedFee.value == false}">
+          <input type="radio" value="false" name="reducedFee" id="option1" formControlName="reducedFee" checked> Nei
+        </label>
+        <label class="btn btn-outline-secondary" [ngClass]="{active: applicationForm.controls.reducedFee.value == true}">
+          <input type="radio" value="true" name="reducedFee" id="option2" formControlName="reducedFee" > Ja
+        </label>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="specialReqs">Andre relevante opplysninger?</label><br />
+      <div class="btn-group-toggle" data-toggle="buttons">
+        <label class="btn btn-outline-secondary" [ngClass]="{active: spec.isSelected}" *ngFor="let spec of specialRequirements" style="margin-right: 7px;">
+          <input type="checkbox" value="spec.specialRequirementId" autocomplete="off"> {{spec.name}}
+        </label>
+        <!--<label class="btn btn-outline-secondary" style="margin-right: 7px;">
+          <input type="checkbox" value="2" autocomplete="off"> Illiness in family
+        </label>-->
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="reducedFee">Choose different days in odd and even weeks?</label><br>
+      <div class="btn-group btn-group-toggle" data-toggle="buttons" (click)="onDaysButtonGroupClick($event)">  
+        <label class="btn btn-outline-secondary" [ngClass]="{active: applicationForm.controls.kindergartenDays.value == false}">
+          <input type="radio" value="false" name="kindergartenDays" id="option1" formControlName="kindergartenDays"  autocomplete="off"> Nei
+        </label>
+        <label class="btn btn-outline-secondary" [ngClass]="{active: applicationForm.controls.kindergartenDays.value == true}">
+          <input type="radio" value="true" name="kindergartenDays" id="option2" formControlName="kindergartenDays"  autocomplete="off"> Ja
+        </label>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="form-group">
+            <div class="week-day-selector">
+              <div [ngClass]="(d.isSeleted)?'w-days':'w-days-notselected'" *ngFor="let d of oddWeekDays" style="margin-right: 7px;"
+                   (click)='OddCalcCoverage(d)'>
+                {{d.day}}
+              </div>
+            </div>
+            <label for="reducedFee">Chosen days: Monday, Wednesday and Thursday</label><br>
+            <label for="reducedFee">Kindergarten Coverage: 60%</label><br>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group" *ngIf="isSelectedEvenDays">
+            <div class="week-day-selector">
+              <div [ngClass]="(d.isSeleted)?'w-days':'w-days-notselected'" *ngFor="let d of evenWeekDays" style="margin-right: 7px;"
+                   (click)='EvenCalcCoverage(d)'>
+                {{d.day}}
+              </div>
+            </div>
+            <label for="reducedFee">Chosen days: Monday, Wednesday and Thursday</label><br>
+          </div>
+        </div>
+
+      </div>
+     </div>
+</form>
   </div>
 
 

@@ -17,6 +17,7 @@
   <ItemGroup>
     <Folder Include="src\app\parents\shared\" />
     <Folder Include="src\assets\images\" />
+    <Folder Include="src\styles\" />
   </ItemGroup>
 
 </Project>

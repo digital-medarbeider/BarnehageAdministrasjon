@@ -28,8 +28,10 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss",
-              "./node_modules/leaflet/dist/leaflet.css"
+              "./src/styles/bootstrap-4.3.1-dist/css/bootstrap.min.css",
+              "./node_modules/leaflet/dist/leaflet.css",
+              "src/styles.scss"
+
             ],
             "scripts": [
               "./node_modules/leaflet/dist/leaflet.js",

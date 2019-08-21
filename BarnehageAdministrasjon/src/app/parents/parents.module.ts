@@ -6,9 +6,11 @@ import { ParentChooseKingergartenComponent } from './parent-choose-kingergarten/
 import { ParentBaseComponent } from './parent-base/parent-base.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MaterialModule } from '../material/material.module';
+import { ChildListComponent } from './child-list/child-list.component';
+import { ChildComponent } from './child/child.component';
 
 @NgModule({
-  declarations: [ParentMainComponent, ParentChooseKingergartenComponent, ParentBaseComponent],
+  declarations: [ParentMainComponent, ParentChooseKingergartenComponent, ParentBaseComponent, ChildListComponent, ChildComponent],
   imports: [
     CommonModule,
     ParentsRoutingModule,

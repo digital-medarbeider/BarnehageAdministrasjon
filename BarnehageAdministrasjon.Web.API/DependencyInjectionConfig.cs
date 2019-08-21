@@ -1,5 +1,4 @@
 ﻿using BarnehageAdministrasjon.Interfaces;
-using BarnehageAdministrasjon.Repositories;
 using BarnehageAdministrasjon.Services;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -13,7 +12,7 @@ namespace BarnehageAdministrasjon.Web.API
     {
         public static void AddScope(IServiceCollection services)
         {
-            services.AddScoped<IApplicationRepository, ApplicationRepository>();
+            //services.AddScoped<IApplicationRepository, ApplicationRepository>();
             services.AddScoped<IApplicationService, ApplicationService>();
         }
     }

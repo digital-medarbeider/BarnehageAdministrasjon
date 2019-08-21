@@ -1,0 +1,11 @@
+<div class="app-content">
+  <!--<form class="form-main" [formGroup]="childListForm">-->
+    <div class="form-group" *ngFor="let application of applications" style="cursor: pointer;"(click)="gotoChild(application)">
+      <div>{{application.child.firstName}} {{application.child.lastName}}</div>
+      <div>Soknad om barnehageplass</div>
+      <div>{{application.child.address}}</div>
+      <div>Foresatte: {{application.mother.firstName}} Mor og {{application.father.firstName}} Far</div>
+    </div>
+    <!--</form>-->
+  </div>
+

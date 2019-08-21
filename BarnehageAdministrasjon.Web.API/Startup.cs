@@ -7,8 +7,6 @@ using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
-using BarnehageAdministrasjon.Interfaces;
-using BarnehageAdministrasjon.Repositories;
 using AutoMapper;
 
 namespace BarnehageAdministrasjon.Web.API
@@ -41,7 +39,15 @@ namespace BarnehageAdministrasjon.Web.API
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             }
             DependencyInjectionConfig.AddScope(services);
-            services.AddAutoMapper(typeof(Startup));
+            // services.AddAutoMapper(typeof(Startup));
+            var mappingConfig = new MapperConfiguration(mc =>
+            {
+                mc.AddProfile(new MappingProfile());
+            });
+
+            IMapper mapper = mappingConfig.CreateMapper();
+            services.AddSingleton(mapper);
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
