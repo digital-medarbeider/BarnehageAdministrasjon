@@ -94,6 +94,7 @@ export class ParentMainComponent implements OnInit {
       this.application.applicationKindergartenCoverages.forEach(ak => {
         if (ak.weekType === 'Odd' && o.value === ak.weekId ) {
           o.isSeleted = true;
+          this.count++;
         }
       });
     });
@@ -106,6 +107,7 @@ export class ParentMainComponent implements OnInit {
       this.application.applicationKindergartenCoverages.forEach(ak => {
         if (ak.weekType === 'Even' &&  o.value === ak.weekId) {
           o.isSeleted = true;
+          this.count++;
         }
       });
     });
@@ -151,6 +153,16 @@ export class ParentMainComponent implements OnInit {
     });
     this.selectedLanguage(firstLanguageValue);
     this.isSelectedEvenDays = this.application.isChooseDiffDays;
+    // this.createDefaultCount();
+  }
+
+  createDefaultCount(): any {
+    if (this.application.isChooseDiffDays) {
+      this.count = this.application.kindergartenCoverage / 10;
+    }
+    else {
+      this.count = this.application.kindergartenCoverage / 20;
+    }
   }
 
   getLanguages() {
@@ -166,31 +178,41 @@ export class ParentMainComponent implements OnInit {
       this.isVisible = true;
     }
   }
+  count = 0;
   OddCalcCoverage(d) {
     if (this.showKindergardens) {
       return;
     }
-    let count = 0;
     this.oddWeekDays.forEach(m => {
       if (m.value === d.value) {
         m.isSeleted = !d.isSeleted;
+        this.count += m.isSeleted ? 1 : -1;
       }
-      count += m.isSeleted ? 1 : 0;
+
     });
-    // this.kindergardenCoverage = count * 20 + '%';
+    this.CalculateKindergartenCoverage();
   }
   EvenCalcCoverage(d) {
     if (this.showKindergardens) {
       return;
     }
-    let count = 0;
+    // let count = 0;
     this.evenWeekDays.forEach(m => {
       if (m.value === d.value) {
         m.isSeleted = !d.isSeleted;
+        this.count += m.isSeleted ? 1 : -1;
       }
-      count += m.isSeleted ? 1 : 0;
     });
-    // this.kindergardenCoverage = count * 20 + '%';
+    this.CalculateKindergartenCoverage();
+  }
+
+  CalculateKindergartenCoverage() {
+    if (this.isSelectedEvenDays) {
+      this.application.kindergartenCoverage = this.count * 10;
+    }
+    else {
+      this.application.kindergartenCoverage = this.count * 20;
+    }
   }
 
   isSelectedEvenDays = false;
@@ -200,18 +222,23 @@ export class ParentMainComponent implements OnInit {
     if (clickedElement.nodeName === "LABEL") {
       if (clickedElement.control.defaultValue === "true") {
         this.isSelectedEvenDays = true;
-        // this.setEvenKindergartenDaysDefaultValues();
         }
         else {
           this.isSelectedEvenDays = false;
-        }
+      }
+      this.setEvenKindergartenDaysDefaultValues();
+      this.CalculateKindergartenCoverage();
     }
   }
     setEvenKindergartenDaysDefaultValues(): any {
-      if (!this.application.isChooseDiffDays) {
+      if (!this.isSelectedEvenDays) {
         this.evenWeekDays.forEach(e => {
-          e.isSeleted = true;
-        })
+          if (e.isSeleted) {
+            e.isSeleted = false;
+            this.count--;
+          }
+
+        });
       }
     }
 }
