@@ -28,9 +28,15 @@
               "src/assets"
             ],
             "styles": [
+              "./src/styles/bootstrap-4.3.1-dist/css/bootstrap.min.css",
+              "./node_modules/leaflet/dist/leaflet.css",
               "src/styles.scss"
+
             ],
-            "scripts": []
+            "scripts": [
+              "./node_modules/leaflet/dist/leaflet.js",
+              "./node_modules/leaflet-webatlastile/L.TileLayer.Webatlas.min.js"
+            ]
           },
           "configurations": {
             "production": {

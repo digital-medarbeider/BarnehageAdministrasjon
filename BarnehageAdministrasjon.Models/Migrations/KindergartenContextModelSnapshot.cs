@@ -21,20 +21,394 @@ namespace BarnehageAdministrasjon.Models.Migrations
 
             modelBuilder.Entity("BarnehageAdministrasjon.Models.Application", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<Guid>("ApplicationId")
                         .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("ApplicationStartDate");
+
+                    b.Property<DateTime>("ApplicationSubmitDate");
 
                     b.Property<string>("ChildAddress");
 
+                    b.Property<string>("ChildId");
+
                     b.Property<string>("ChildName");
+
+                    b.Property<string>("FatherId");
 
                     b.Property<string>("FatherName");
 
+                    b.Property<string>("FirstLanguage");
+
+                    b.Property<bool>("IsChooseDiffDays");
+
+                    b.Property<bool>("IsReducedFee");
+
+                    b.Property<int>("KindergartenCoverage");
+
+                    b.Property<string>("LevelOfSpoken");
+
+                    b.Property<string>("MotherId");
+
                     b.Property<string>("MotherName");
 
-                    b.HasKey("Id");
+                    b.Property<int>("MunicipalityId");
+
+                    b.Property<string>("Status");
+
+                    b.HasKey("ApplicationId");
+
+                    b.HasIndex("ChildId");
+
+                    b.HasIndex("FatherId");
+
+                    b.HasIndex("MotherId");
+
+                    b.HasIndex("MunicipalityId");
 
                     b.ToTable("Applications");
+
+                    b.HasData(
+                        new
+                        {
+                            ApplicationId = new Guid("1a3b944e-3632-467b-a53a-206305310bae"),
+                            ApplicationStartDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ApplicationSubmitDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ChildId = "11111111111",
+                            FatherId = "22222222222",
+                            IsChooseDiffDays = true,
+                            IsReducedFee = true,
+                            KindergartenCoverage = 60,
+                            MotherId = "33333333333",
+                            MunicipalityId = 1,
+                            Status = "Draft"
+                        },
+                        new
+                        {
+                            ApplicationId = new Guid("e2f7997c-ba14-46d4-b417-aef06b64d33e"),
+                            ApplicationStartDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ApplicationSubmitDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ChildId = "44444444444",
+                            FatherId = "22222222222",
+                            IsChooseDiffDays = true,
+                            IsReducedFee = false,
+                            KindergartenCoverage = 60,
+                            MotherId = "33333333333",
+                            MunicipalityId = 1,
+                            Status = "Draft"
+                        });
+                });
+
+            modelBuilder.Entity("BarnehageAdministrasjon.Models.ApplicationKindergartenCoverage", b =>
+                {
+                    b.Property<Guid>("ApplicationId");
+
+                    b.Property<int>("WeekId");
+
+                    b.Property<string>("WeekType");
+
+                    b.HasKey("ApplicationId", "WeekId");
+
+                    b.HasIndex("WeekId");
+
+                    b.ToTable("ApplicationKindergartenCoverage");
+
+                    b.HasData(
+                        new
+                        {
+                            ApplicationId = new Guid("1a3b944e-3632-467b-a53a-206305310bae"),
+                            WeekId = 1,
+                            WeekType = "Even"
+                        },
+                        new
+                        {
+                            ApplicationId = new Guid("1a3b944e-3632-467b-a53a-206305310bae"),
+                            WeekId = 3,
+                            WeekType = "Even"
+                        },
+                        new
+                        {
+                            ApplicationId = new Guid("1a3b944e-3632-467b-a53a-206305310bae"),
+                            WeekId = 2,
+                            WeekType = "Odd"
+                        },
+                        new
+                        {
+                            ApplicationId = new Guid("1a3b944e-3632-467b-a53a-206305310bae"),
+                            WeekId = 4,
+                            WeekType = "Odd"
+                        },
+                        new
+                        {
+                            ApplicationId = new Guid("e2f7997c-ba14-46d4-b417-aef06b64d33e"),
+                            WeekId = 2,
+                            WeekType = "Even"
+                        },
+                        new
+                        {
+                            ApplicationId = new Guid("e2f7997c-ba14-46d4-b417-aef06b64d33e"),
+                            WeekId = 4,
+                            WeekType = "Even"
+                        },
+                        new
+                        {
+                            ApplicationId = new Guid("e2f7997c-ba14-46d4-b417-aef06b64d33e"),
+                            WeekId = 1,
+                            WeekType = "Odd"
+                        },
+                        new
+                        {
+                            ApplicationId = new Guid("e2f7997c-ba14-46d4-b417-aef06b64d33e"),
+                            WeekId = 3,
+                            WeekType = "Odd"
+                        });
+                });
+
+            modelBuilder.Entity("BarnehageAdministrasjon.Models.ApplicationSpecRequirement", b =>
+                {
+                    b.Property<Guid>("ApplicationId");
+
+                    b.Property<int>("SpecialRequirementId");
+
+                    b.HasKey("ApplicationId", "SpecialRequirementId");
+
+                    b.HasIndex("SpecialRequirementId");
+
+                    b.ToTable("ApplicationSpecRequirement");
+
+                    b.HasData(
+                        new
+                        {
+                            ApplicationId = new Guid("1a3b944e-3632-467b-a53a-206305310bae"),
+                            SpecialRequirementId = 1
+                        },
+                        new
+                        {
+                            ApplicationId = new Guid("1a3b944e-3632-467b-a53a-206305310bae"),
+                            SpecialRequirementId = 2
+                        },
+                        new
+                        {
+                            ApplicationId = new Guid("e2f7997c-ba14-46d4-b417-aef06b64d33e"),
+                            SpecialRequirementId = 1
+                        });
+                });
+
+            modelBuilder.Entity("BarnehageAdministrasjon.Models.Municipality", b =>
+                {
+                    b.Property<int>("MunicipalityId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name");
+
+                    b.HasKey("MunicipalityId");
+
+                    b.ToTable("Municipalities");
+
+                    b.HasData(
+                        new
+                        {
+                            MunicipalityId = 1,
+                            Name = "Oslo"
+                        },
+                        new
+                        {
+                            MunicipalityId = 2,
+                            Name = "Oslo2"
+                        });
+                });
+
+            modelBuilder.Entity("BarnehageAdministrasjon.Models.Person", b =>
+                {
+                    b.Property<string>("NationalId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Address");
+
+                    b.Property<string>("Email");
+
+                    b.Property<string>("FirstLanguage");
+
+                    b.Property<string>("FirstName");
+
+                    b.Property<string>("LastName");
+
+                    b.Property<string>("LevelOfSpoken");
+
+                    b.Property<string>("MaritalStatus");
+
+                    b.Property<int>("PhoneNumber");
+
+                    b.HasKey("NationalId");
+
+                    b.ToTable("Persons");
+
+                    b.HasData(
+                        new
+                        {
+                            NationalId = "11111111111",
+                            Address = "oslo, Norway",
+                            Email = "abc@xyz.com",
+                            FirstLanguage = "Norway",
+                            FirstName = "Arne",
+                            LastName = "Legureett",
+                            LevelOfSpoken = "Medium",
+                            PhoneNumber = 11111111
+                        },
+                        new
+                        {
+                            NationalId = "44444444444",
+                            Address = "oslo, Norway",
+                            Email = "martin@xyz.com",
+                            FirstLanguage = "Norway",
+                            FirstName = "Martin",
+                            LastName = "Legureett",
+                            LevelOfSpoken = "Low",
+                            PhoneNumber = 33333333
+                        },
+                        new
+                        {
+                            NationalId = "22222222222",
+                            Address = "oslo, Norway",
+                            Email = "abc@xyz.com",
+                            FirstLanguage = "Norway",
+                            FirstName = "Per",
+                            LastName = "Legureett",
+                            LevelOfSpoken = "Low",
+                            MaritalStatus = "Married",
+                            PhoneNumber = 22222222
+                        },
+                        new
+                        {
+                            NationalId = "33333333333",
+                            Address = "oslo, Norway",
+                            Email = "abc@xyz.com",
+                            FirstLanguage = "Norway",
+                            FirstName = "Marianna",
+                            LastName = "Legureett",
+                            LevelOfSpoken = "Low",
+                            MaritalStatus = "Married",
+                            PhoneNumber = 33333333
+                        });
+                });
+
+            modelBuilder.Entity("BarnehageAdministrasjon.Models.SpecialRequirement", b =>
+                {
+                    b.Property<int>("SpecialRequirementId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name");
+
+                    b.HasKey("SpecialRequirementId");
+
+                    b.ToTable("SpecialRequirements");
+
+                    b.HasData(
+                        new
+                        {
+                            SpecialRequirementId = 1,
+                            Name = "Disabilities"
+                        },
+                        new
+                        {
+                            SpecialRequirementId = 2,
+                            Name = "Illinessinfamily"
+                        });
+                });
+
+            modelBuilder.Entity("BarnehageAdministrasjon.Models.WeekDay", b =>
+                {
+                    b.Property<int>("WeekId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Day");
+
+                    b.Property<string>("Keyword");
+
+                    b.HasKey("WeekId");
+
+                    b.ToTable("WeekDays");
+
+                    b.HasData(
+                        new
+                        {
+                            WeekId = 1,
+                            Day = "Monday",
+                            Keyword = "M"
+                        },
+                        new
+                        {
+                            WeekId = 2,
+                            Day = "Tuesday",
+                            Keyword = "T"
+                        },
+                        new
+                        {
+                            WeekId = 3,
+                            Day = "Wednesday",
+                            Keyword = "W"
+                        },
+                        new
+                        {
+                            WeekId = 4,
+                            Day = "Thursday",
+                            Keyword = "T"
+                        },
+                        new
+                        {
+                            WeekId = 5,
+                            Day = "Friday",
+                            Keyword = "F"
+                        });
+                });
+
+            modelBuilder.Entity("BarnehageAdministrasjon.Models.Application", b =>
+                {
+                    b.HasOne("BarnehageAdministrasjon.Models.Person", "Child")
+                        .WithMany()
+                        .HasForeignKey("ChildId");
+
+                    b.HasOne("BarnehageAdministrasjon.Models.Person", "Father")
+                        .WithMany()
+                        .HasForeignKey("FatherId");
+
+                    b.HasOne("BarnehageAdministrasjon.Models.Person", "Mother")
+                        .WithMany()
+                        .HasForeignKey("MotherId");
+
+                    b.HasOne("BarnehageAdministrasjon.Models.Municipality", "Municipality")
+                        .WithMany()
+                        .HasForeignKey("MunicipalityId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("BarnehageAdministrasjon.Models.ApplicationKindergartenCoverage", b =>
+                {
+                    b.HasOne("BarnehageAdministrasjon.Models.Application", "Application")
+                        .WithMany("ApplicationKindergartenCoverages")
+                        .HasForeignKey("ApplicationId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("BarnehageAdministrasjon.Models.WeekDay", "WeekDay")
+                        .WithMany("ApplicationKindergartenCoverages")
+                        .HasForeignKey("WeekId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("BarnehageAdministrasjon.Models.ApplicationSpecRequirement", b =>
+                {
+                    b.HasOne("BarnehageAdministrasjon.Models.Application", "Application")
+                        .WithMany("ApplicationSpecRequirements")
+                        .HasForeignKey("ApplicationId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("BarnehageAdministrasjon.Models.SpecialRequirement", "SpecialRequirement")
+                        .WithMany("ApplicationSpecRequirements")
+                        .HasForeignKey("SpecialRequirementId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }

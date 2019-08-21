@@ -13,11 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BarnehageAdministrasjon.Com
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BarnehageAdministrasjon.Interfaces", "BarnehageAdministrasjon.Interfaces\BarnehageAdministrasjon.Interfaces.csproj", "{8DA2D624-518F-460B-A8F6-32C3624D3380}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BarnehageAdministrasjon.Repositories", "BarnehageAdministrasjon.Repositories\BarnehageAdministrasjon.Repositories.csproj", "{2BFE587F-CC94-41E8-9FD2-8C4F07CB67A8}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BarnehageAdministrasjon.ViewModels", "BarnehageAdministrasjon.ViewModels\BarnehageAdministrasjon.ViewModels.csproj", "{1E5811D9-45E8-40FA-98CE-C49F36BFCC1A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BarnehageAdministrasjon", "BarnehageAdministrasjon\BarnehageAdministrasjon.csproj", "{CC23BA69-829F-4EF5-82B5-07AF09CA6463}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BarnehageAdministrasjon", "BarnehageAdministrasjon\BarnehageAdministrasjon.csproj", "{CC23BA69-829F-4EF5-82B5-07AF09CA6463}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,10 +43,6 @@ Global
 		{8DA2D624-518F-460B-A8F6-32C3624D3380}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8DA2D624-518F-460B-A8F6-32C3624D3380}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8DA2D624-518F-460B-A8F6-32C3624D3380}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2BFE587F-CC94-41E8-9FD2-8C4F07CB67A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2BFE587F-CC94-41E8-9FD2-8C4F07CB67A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2BFE587F-CC94-41E8-9FD2-8C4F07CB67A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2BFE587F-CC94-41E8-9FD2-8C4F07CB67A8}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1E5811D9-45E8-40FA-98CE-C49F36BFCC1A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{1E5811D9-45E8-40FA-98CE-C49F36BFCC1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1E5811D9-45E8-40FA-98CE-C49F36BFCC1A}.Release|Any CPU.ActiveCfg = Release|Any CPU

@@ -2,7 +2,63 @@
   background-color: #f3f4f4;
 
   .form-main {
-    mat-label{
+    .Rectangle-57 {
+      width: 129px;
+      height: 34px;
+      object-fit: contain;
+      border-radius: 8px;
+      border: solid 1px #f08065;
+      background-color: #ffffff;
+    }
+
+    .button_season {
+      font-size: 80%;
+      width: 8.3333%;
+    }
+
+    .week-day-selector {
+      display: flex;
+      /*justify-content: space-evenly;*/
+      margin-bottom: 1.5rem;
+      margin-top: .5rem;
+
+      .w-days {
+        width: 40px;
+        height: 40px;
+        border-radius: 40px;
+        border: 1px solid #f3f4f4;
+        background-color: #f08065;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+      }
+
+      .w-days-notselected {
+        width: 40px;
+        height: 40px;
+        border-radius: 40px;
+        border: 1px solid #f3f4f4;
+        background-color: #919191;
+        color: rgba(255, 255, 255, 0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+      }
+    }
+
+    .Rectangle-58 {
+      /*width: 225px;
+      height: 42px;*/
+      object-fit: contain;
+      border-radius: 8px;
+      border: solid 1px #f08065;
+      /*background-color: #ffffff;*/
+    }
+
+    mat-label {
       /*font-size:18px*/
     }
   }
