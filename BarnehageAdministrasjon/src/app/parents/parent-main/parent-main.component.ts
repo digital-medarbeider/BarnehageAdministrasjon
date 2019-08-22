@@ -19,22 +19,24 @@ export class ParentMainComponent implements OnInit {
     { value: 2, viewValue: 'English' },
   ];
 
-  oddWeekDays = [{ day: 'M', isSeleted: false, value: 1 },
-                 { day: 'T', isSeleted: false, value: 2 },
-                 { day: 'O', isSeleted: false, value: 3 },
-                 { day: 'T', isSeleted: false, value: 4 },
-                 { day: 'F', isSeleted: false, value: 5 }
+  oddWeekDays = [{ day: 'M', dayDetail: 'Monday', isSeleted: false, value: 1 },
+                 { day: 'T', dayDetail: 'Tuesday', isSeleted: false, value: 2 },
+                 { day: 'O', dayDetail: 'Wednesday',isSeleted: false, value: 3 },
+                 { day: 'T', dayDetail: 'Thursday',isSeleted: false, value: 4 },
+                 { day: 'F', dayDetail: 'Friday',isSeleted: false, value: 5 }
   ];
-  evenWeekDays = [{ day: 'M', isSeleted: false, value: 1 },
-                  { day: 'T', isSeleted: false, value: 2 },
-                  { day: 'O', isSeleted: false, value: 3 },
-                  { day: 'T', isSeleted: false, value: 4 },
-                  { day: 'F', isSeleted: false, value: 5 }
+  evenWeekDays = [{ day: 'M', dayDetail: 'Monday', isSeleted: false, value: 1 },
+                  { day: 'T', dayDetail: 'Tuesday', isSeleted: false, value: 2 },
+                  { day: 'O', dayDetail: 'Wednesday', isSeleted: false, value: 3 },
+                  { day: 'T', dayDetail: 'Thursday', isSeleted: false, value: 4 },
+                  { day: 'F', dayDetail: 'Friday', isSeleted: false, value: 5 }
   ];
 
   showKindergardens = false;
   toggleSelected = true;
   specialRequirements: any;
+  oddDays: any;
+  evenDays: any;
 
   constructor(private activateRouter: ActivatedRoute, private applicationService: ApplicationService, private fb: FormBuilder,
               private specReqsService: SpecialRequirementService) {
@@ -95,6 +97,8 @@ export class ParentMainComponent implements OnInit {
         if (ak.weekType === 'Odd' && o.value === ak.weekId ) {
           o.isSeleted = true;
           this.count++;
+          this.oddDays.push(o.dayDetail);
+          //this.dayOddLabel += o.dayDetail +  ', ';
         }
       });
     });
@@ -108,6 +112,8 @@ export class ParentMainComponent implements OnInit {
         if (ak.weekType === 'Even' &&  o.value === ak.weekId) {
           o.isSeleted = true;
           this.count++;
+          this.evenDays.push(o.dayDetail);
+         // this.dayEvenLabel += o.dayDetail + ', ';
         }
       });
     });
@@ -237,7 +243,6 @@ export class ParentMainComponent implements OnInit {
             e.isSeleted = false;
             this.count--;
           }
-
         });
       }
     }
