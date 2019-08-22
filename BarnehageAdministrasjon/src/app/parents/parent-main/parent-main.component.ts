@@ -35,8 +35,10 @@ export class ParentMainComponent implements OnInit {
   showKindergardens = false;
   toggleSelected = true;
   specialRequirements: any;
-  oddDays: any;
-  evenDays: any;
+  oddDays = [];
+  evenDays = [];
+  oddDayLabel: string;
+  evenDayLabel: string;
 
   constructor(private activateRouter: ActivatedRoute, private applicationService: ApplicationService, private fb: FormBuilder,
               private specReqsService: SpecialRequirementService) {
@@ -102,7 +104,7 @@ export class ParentMainComponent implements OnInit {
         }
       });
     });
-
+    this.createOddLabel();
   }
 
   setEvenWeekKindergartenCoverages() {
@@ -117,7 +119,7 @@ export class ParentMainComponent implements OnInit {
         }
       });
     });
-
+    this.createEvenLabel();
   }
 
   setAppSpecialRequirements() {
@@ -193,10 +195,12 @@ export class ParentMainComponent implements OnInit {
       if (m.value === d.value) {
         m.isSeleted = !d.isSeleted;
         this.count += m.isSeleted ? 1 : -1;
+        this.addRemoveOddDayItem(m);
       }
 
     });
     this.CalculateKindergartenCoverage();
+    this.createOddLabel();
   }
   EvenCalcCoverage(d) {
     if (this.showKindergardens) {
@@ -207,9 +211,29 @@ export class ParentMainComponent implements OnInit {
       if (m.value === d.value) {
         m.isSeleted = !d.isSeleted;
         this.count += m.isSeleted ? 1 : -1;
+        this.addRemoveEvenDayItem(m);
       }
     });
     this.CalculateKindergartenCoverage();
+    this.createEvenLabel();
+  }
+
+  addRemoveEvenDayItem(m) {
+    if (m.isSeleted) {
+      this.evenDays.push(m.dayDetail);
+    }
+    else {
+      this.evenDays.splice(this.oddDays.indexOf(m), 1);
+    }
+  }
+
+  addRemoveOddDayItem(m) {
+    if (m.isSeleted) {
+      this.oddDays.push(m.dayDetail);
+    }
+    else {
+      this.oddDays.splice(this.oddDays.indexOf(m), 1);
+    }
   }
 
   CalculateKindergartenCoverage() {
@@ -242,8 +266,23 @@ export class ParentMainComponent implements OnInit {
           if (e.isSeleted) {
             e.isSeleted = false;
             this.count--;
+            this.evenWeekDays.splice(this.evenWeekDays.indexOf(e), 1);
           }
         });
+        this.createEvenLabel();
       }
-    }
+  }
+
+  createOddLabel() {
+    this.oddDayLabel = this.oddDays.join(',');
+    //this.oddDays.forEach(o => {
+    //  this.oddDayLabel += o + ',';
+    //});
+  }
+  createEvenLabel() {
+    this.evenDayLabel = this.evenDays.join(',');
+    //this.evenDays.forEach(o => {
+    //  this.evenDayLabel += o + ',';
+    //});
+  }
 }
